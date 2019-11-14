@@ -1,0 +1,30 @@
+<Track>
+    canvas:
+        Color:
+            rgba:1,1,1,1
+        Line:
+            points:[0,root.center_y,root.width,root.center_y]
+            dash_offset:20
+            dash_length:20
+
+<Horse>
+    direction:"right"
+    canvas:
+        Color:
+            rgba:1,1,1,1
+        Rectangle:
+            source:"horse_right.png" if root.direction=="right" else "horse_left.png"
+            size:root.height,root.height
+
+
+
+
+
+
+<HorseTrack>
+    horse_size:self.height*1.2
+
+    Track
+
+
+HorseGame

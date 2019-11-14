@@ -1,0 +1,49 @@
+
+
+<CombatArenaGame>
+    canvas.after:
+        Color:
+            rgba:1,1,1,1
+        Line:
+            points:self.width/8,0,self.width/8,self.height
+            width:3
+        Line:
+            points:2*self.width/8,0,2*self.width/8,self.height
+            width:3
+        Line:
+            points:3*self.width/8,0,3*self.width/8,self.height
+            width:3
+        Line:
+            width:3
+            points:4*self.width/8,0,4*self.width/8,self.height
+        Line:
+            width:3
+            points:5*self.width/8,0,5*self.width/8,self.height
+        Line:
+            width:3
+            points:6*self.width/8,0,6*self.width/8,self.height
+        Line:
+            width:3
+            points:7*self.width/8,0,7*self.width/8,self.height
+        Line:
+            width:3
+            points:0,self.height/5,self.width,self.height/5
+        Line:
+            width:3
+            points:0,2*self.height/5,self.width,2*self.height/5
+        Line:
+            width:3
+            points:0,3*self.height/5,self.width,3*self.height/5
+        Line:
+            width:3
+            points:0,4*self.height/5,self.width,4*self.height/5
+
+
+<Mobster>
+    canvas:
+        Color:
+            rgba:1,1,1,1
+        Rectangle:
+            source:self.name+".png"
+            size:(min(self.parent.size),min(self.parent.size)) if self.parent else (100,100)
+            #pos:self.pos

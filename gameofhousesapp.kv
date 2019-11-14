@@ -1,0 +1,73 @@
+
+
+
+<NewSmashGame>
+    name:"Väkisinmakuupussi"
+    orientation:"vertical"
+    Label:
+        opacity:self.parent.d_opacity
+        font_size:int(self.parent.width//30)
+        pf:"[size="+str(self.font_size)+"][b]"
+        sf:"[/size][/b]"
+        text:self.pf+self.parent.description+self.sf
+        markup:True
+
+    BoxLayout:
+        font_size:int(self.parent.width/20)
+        o1:self.parent.fw_opacity
+        o2:self.parent.sw_opacity
+        o3:self.parent.tw_opacity
+        Label:
+            opacity:self.parent.o1
+            text:("[b][size="+str(self.parent.font_size)+"]"+self.parent.parent.first_word if self.parent else "")+"[/b][/size]"
+            markup:True
+            halign:"right"
+            valign:"center"
+            text_size:400,200
+        Label:
+            opacity:self.parent.o2
+            text:("[b][color=#62e3f5][size="+str(self.parent.font_size)+"]"+self.parent.parent.second_word if self.parent else "")+"[/color][/b][/size]"
+            markup:True
+            valign:"top"
+            size_hint_x:None
+            size:self.texture_size
+            height:200
+            outline_width:1
+            outline_color:.4,.4,.4,.1
+        Label:
+            opacity:self.parent.o3
+            text:("[b][size="+str(self.parent.font_size)+"]"+self.parent.parent.third_word if self.parent else "")+"[/b][/size]"
+            markup:True
+            halign:"left"
+            valign:"center"
+            text_size:400,200
+
+<AnswerSmash>
+
+
+MiniGame:
+
+
+    canvas.before:
+
+        Color:
+            rgba:list(i/255 for i in (185, 19, 33,255))
+        Rectangle:
+            size:self.size
+
+        Color:
+            rgba:list(i/255 for i in (210, 22, 32,255))
+        Rectangle:
+            size:self.size
+            source:"topdowngradient.png"
+
+    orientation:"vertical"
+    Label:
+        text:self.parent.gamebox.game.title if self.parent and self.parent.gamebox.game else "GAME OF HOUSES"
+        size_hint_y:.1
+    GameBox
+    Label:
+        text:self.parent.active_player if self.parent else ""
+        size_hint_y:.07
+
+
