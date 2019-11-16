@@ -10,8 +10,8 @@ if False:
     secret = "194f9fbcb9044e92ba28462d8c69b59d"
     token = util.prompt_for_user_token(username, scope, client_id=client, client_secret=secret,
                                    redirect_uri="http://localhost/")
-os.environ["KIVY-AUDIO"]="sdl2"
-os.environ["SDL_AUDIODRIVER"]="alsa"
+#os.environ["KIVY-AUDIO"]="sdl2"
+#os.environ["SDL_AUDIODRIVER"]="alsa"
 from kivy.config import Config
 Config.set("input","mouse","mouse,multitouch_on_demand")
 
@@ -30,7 +30,6 @@ from configparser import ConfigParser
 import random
 from functools import partial
 from kivy.animation import Animation
-from kivy.graphics import Rectangle
 from HorsePlay import HorseGame
 from MiniGames import MiniGames
 
@@ -110,18 +109,19 @@ class Game:
             player.eos=eos
             player.volume=volume
 
-            return
+            return player
 
         s = {
             "source": video_path,
             "state": "stop" if paused else "play",
             "options": {"allow_stretch": True},
             "volume":volume,
-            "size":self.screen.size
+            "size":self.screen.size,
+            "eos":eos
         }
 
         player = Video(**s)
-        player.bind(eos=self.on_video_end)
+        player.bind(on_eos=self.on_video_end)
         return player
 
 

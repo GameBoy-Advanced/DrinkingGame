@@ -17,13 +17,15 @@
         o1:self.parent.fw_opacity
         o2:self.parent.sw_opacity
         o3:self.parent.tw_opacity
+        h:200
         Label:
             opacity:self.parent.o1
             text:("[b][size="+str(self.parent.font_size)+"]"+self.parent.parent.first_word if self.parent else "")+"[/b][/size]"
             markup:True
             halign:"right"
             valign:"center"
-            text_size:400,200
+            text_size:self.size
+
         Label:
             opacity:self.parent.o2
             text:("[b][color=#62e3f5][size="+str(self.parent.font_size)+"]"+self.parent.parent.second_word if self.parent else "")+"[/color][/b][/size]"
@@ -31,16 +33,15 @@
             valign:"top"
             size_hint_x:None
             size:self.texture_size
-            height:200
-            outline_width:1
-            outline_color:.4,.4,.4,.1
+            valign:"center"
+
         Label:
             opacity:self.parent.o3
             text:("[b][size="+str(self.parent.font_size)+"]"+self.parent.parent.third_word if self.parent else "")+"[/b][/size]"
             markup:True
             halign:"left"
             valign:"center"
-            text_size:400,200
+            text_size:self.size
 
 <AnswerSmash>
 
@@ -63,11 +64,14 @@ MiniGame:
 
     orientation:"vertical"
     Label:
-        text:self.parent.gamebox.game.title if self.parent and self.parent.gamebox.game else "GAME OF HOUSES"
+        font_size:self.parent.width//20
+        #pf:"[size="+str(self.font_size)+"]"
+        #sf:"[/size]"
+        text:self.parent.gamebox.game.title if self.parent.gamebox.game else "GAME OF HOUSES"
         size_hint_y:.1
     GameBox
     Label:
-        text:self.parent.active_player if self.parent else ""
+        text:self.parent.active_player if self.parent.active_player else ""
         size_hint_y:.07
 
 
